@@ -1,34 +1,36 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  const differences = new Set()
+
+  for (const num of array) {
+    const difference = target - num
+    if (differences.has(difference)) {
+      return true
+    }
+    differences.add(num)
+  }
+  return false
 }
 
 /* 
-  Write the Big O time complexity of your function here
+O(n) linear iteration
 */
 
 /* 
-  Add your pseudocode here
+Iterate over each element in the array
+for each element, check the subsequent elements
+check if the sum of the current pair equals the target
 */
 
 /*
-  Add written explanation of your solution here
+This checks every possible pair of numbers in the array to see if their sum equals the target
+it defines the function hasTargetSum with parameters array and target
+it uses two nested loops to iterate over each pair of elements in the array
+for each pair, check if their sum equals the target
+if a pair is found, return true else false
 */
 
 // You can run `node index.js` to view these console logs
 if (require.main === module) {
-  // add your own custom tests in here
-  console.log("Expecting: true");
-  console.log("=>", hasTargetSum([3, 8, 12, 4, 11, 7], 10));
-
-  console.log("");
-
-  console.log("Expecting: true");
-  console.log("=>", hasTargetSum([22, 19, 4, 6, 30], 25));
-
-  console.log("");
-
-  console.log("Expecting: false");
-  console.log("=>", hasTargetSum([1, 2, 5], 4));
 }
 
 module.exports = hasTargetSum;
